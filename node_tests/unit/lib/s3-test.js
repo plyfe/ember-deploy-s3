@@ -38,7 +38,7 @@ describe('S3Adapter', function() {
       s3: new MockS3(),
       config: stubConfig,
       taggingAdapter: {
-        tagName: function() {
+        getTagName: function() {
           return '1-2-3';
         }
       }
@@ -83,7 +83,7 @@ describe('S3Adapter', function() {
         s3: new MockS3(),
         config: stubConfigWithPrefix,
         taggingAdapter: {
-          tagName: function() {
+          getTagName: function() {
             return '1-2-3';
           }
         }
