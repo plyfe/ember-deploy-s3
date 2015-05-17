@@ -36,7 +36,12 @@ describe('S3Adapter', function() {
     s3Adapter = new S3Adapter({
       ui: new MockUI(),
       s3: new MockS3(),
-      config: stubConfig
+      config: stubConfig,
+      taggingAdapter: {
+        tagName: function() {
+          return '1-2-3';
+        }
+      }
     });
   });
 
@@ -55,7 +60,7 @@ describe('S3Adapter', function() {
         s3Params: {
           ACL: 'public-read',
           Bucket: '<your-bucket-name>',
-          Prefix: '',
+          Prefix: '1-2-3',
           CacheControl: 'max-age=63072000, public',
           Expires: new Date('2030')
         }
@@ -76,7 +81,12 @@ describe('S3Adapter', function() {
       var s3AdapterCustomPrefix = new S3Adapter({
         ui: new MockUI(),
         s3: new MockS3(),
-        config: stubConfigWithPrefix
+        config: stubConfigWithPrefix,
+        taggingAdapter: {
+          tagName: function() {
+            return '1-2-3';
+          }
+        }
       });
 
       var expected = {
@@ -84,7 +94,7 @@ describe('S3Adapter', function() {
         s3Params: {
           ACL: 'public-read',
           Bucket: '<your-bucket-name>',
-          Prefix: 'release/assets/',
+          Prefix: 'release/assets/1-2-3',
           CacheControl: 'max-age=63072000, public',
           Expires: new Date('2030')
         }
