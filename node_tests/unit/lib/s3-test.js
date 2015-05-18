@@ -94,7 +94,7 @@ describe('S3Adapter', function() {
         s3Params: {
           ACL: 'public-read',
           Bucket: '<your-bucket-name>',
-          Prefix: 'release/assets/1-2-3',
+          Prefix: '1-2-3/release/assets/',
           CacheControl: 'max-age=63072000, public',
           Expires: new Date('2030')
         }
